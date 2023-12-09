@@ -85,7 +85,7 @@ def cambiar_link(file_id):
 
     try:
         #id de la carpeta donde se copian los documentos
-        folder_id = "1sPzPNE-a435bve2mUrqI02p6g2rmM6-Y"
+        folder_id = ""
 
         #se copia y se obtiene el archivo
         archivo = service.files().copy(fileId=file_id, body={'parents': [folder_id]}).execute()

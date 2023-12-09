@@ -23,8 +23,8 @@ courses = {
   '13': ['RAZONAMIENTO MATEMATICO', '625475413106'] , '14': ['RAZONAMIENTO VERBAL', '529166619933']
 }
 
-id_216b = "529153591750"
-id_modelo = "625468458229"
+id_216b = ""
+id_modelo = ""
 
 def main():
 
