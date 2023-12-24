@@ -14,16 +14,16 @@ public class ProjectMain {
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         System.out.println("HOLA MUNDO \n");
 
-        String courseId = "650163376669";
-        String modeloId = "650437997576";
-        String folderId = "1pT7pq1RUbid8ufv9hfaEdJ4EbfjESpoK";
+        String courseId = "id"; //id del salon ejemplo 216b
+        String modeloId = "id"; //id del modelo por ejm modelo ingenierias
+        String folderId = "id"; //id del folder donde se copian los pdf
 
         Map<String, String> materials = new HashMap<>();
-        materials.put("PRÁCTICAS SEMANA 1", getDateTime(2023, 12, 25, 7, 0));
+        materials.put("PRÁCTICAS SEMANA 1", getDateTime(2023, 12, 25, 7, 0)); //nombre y fecha(dia, mes, año, hora minuto)
 
         HashMap<String, String[]> courses = new HashMap<>();
-            courses.put("13" , new String[]{"RAZONAMIENTO MATEMÁTICO", "650435850887"});
-            courses.put("14" , new String[]{"RAZONAMIENTO VERBAL", "646644423634"});
+            courses.put("13" , new String[]{"RAZONAMIENTO MATEMÁTICO", "id"}); //nombre y id del curso
+            courses.put("14" , new String[]{"RAZONAMIENTO VERBAL", "id"});
 /*
         subirMateriales(
                 courseId,
