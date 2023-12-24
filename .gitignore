@@ -1,0 +1,13 @@
+env/
+*.json
+__pycache__/
+
+
+# Eclipse
+.class
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
