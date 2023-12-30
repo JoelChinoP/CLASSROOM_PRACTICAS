@@ -22,8 +22,11 @@ import com.google.api.services.classroom.Classroom;
 import com.google.api.services.classroom.ClassroomScopes;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.FileList;
+import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.CalendarScopes;
+
 
 public class ApiCredentials {
 
@@ -34,10 +37,14 @@ public class ApiCredentials {
 
   private static ArrayList<String> SCOPES =
       new ArrayList<>(Arrays.asList(
-        ClassroomScopes.CLASSROOM_COURSES,
-        ClassroomScopes.CLASSROOM_TOPICS,
-        ClassroomScopes.CLASSROOM_COURSEWORKMATERIALS,
-        DriveScopes.DRIVE));
+          ClassroomScopes.CLASSROOM_COURSES,
+          ClassroomScopes.CLASSROOM_TOPICS,
+          ClassroomScopes.CLASSROOM_COURSEWORKMATERIALS,
+          DriveScopes.DRIVE,
+          SheetsScopes.SPREADSHEETS,
+          CalendarScopes.CALENDAR_EVENTS,
+          CalendarScopes.CALENDAR
+      ));
 
   private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
       throws IOException {
@@ -84,6 +91,31 @@ public class ApiCredentials {
         .setApplicationName(APPLICATION_NAME)
         .build();
   }
+
+  static Sheets getSheetsService ()
+          throws GeneralSecurityException, IOException {
+
+    // Build a new authorized API client service.
+    final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+
+    return
+            new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                    .setApplicationName(APPLICATION_NAME)
+                    .build();
+  }
+
+  static Calendar getCalendarService ()
+          throws GeneralSecurityException, IOException {
+
+    // Build a new authorized API client service.
+    final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+
+    return
+            new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                    .setApplicationName(APPLICATION_NAME)
+                    .build();
+  }
+
 
   public static void main(String[] args) throws GeneralSecurityException, IOException {
     //Classroom service = getService();

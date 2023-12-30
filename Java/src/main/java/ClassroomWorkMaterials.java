@@ -15,16 +15,16 @@ public class ClassroomWorkMaterials {
     static CourseWorkMaterial prepare (String courseId, String topicId, String title, String link, String date)
         throws GeneralSecurityException, IOException {
 
-        return create(courseId, topicId, title, link, "DRAFT");
+        return create(courseId, topicId, title, link, "DRAFT", date);
     }
     
     static CourseWorkMaterial post (String courseId, String topicId, String title, String link)
         throws GeneralSecurityException, IOException {
 
-        return create(courseId, topicId, title, link, "PUBLISHED");
+        return create(courseId, topicId, title, link, "PUBLISHED", "");
     }
 
-    static CourseWorkMaterial create (String courseId, String topicId, String title, String link, String state)
+    static CourseWorkMaterial create (String courseId, String topicId, String title, String link, String state, String date)
             throws GeneralSecurityException, IOException {
 
         Classroom service = ApiCredentials.getClassroomService();
@@ -41,7 +41,8 @@ public class ClassroomWorkMaterials {
                             .setTitle(title)
                             .setTopicId(topicId)
                             .setMaterials(materials)
-                            .setState(state);
+                            .setState(state)
+                            .setScheduledTime(date);
 
             courseWork = service.courses().courseWorkMaterials().create(courseId, content).execute();
 
